@@ -2,70 +2,41 @@
   "name": "Prospect",
   "type": "object",
   "properties": {
-    "place_id": {
-      "type": "string",
-      "title": "Place ID",
-      "description": "Google Maps place ID (unique dedup key)"
-    },
-    "name": {
-      "type": "string",
-      "title": "Business Name"
-    },
-    "phone": {
-      "type": "string",
-      "title": "Phone"
-    },
-    "email": {
-      "type": "string",
-      "title": "Email"
-    },
-    "website": {
-      "type": "string",
-      "title": "Website"
-    },
-    "address": {
-      "type": "string",
-      "title": "Address"
-    },
-    "rating": {
-      "type": "number",
-      "title": "Rating"
-    },
-    "review_count": {
-      "type": "number",
-      "title": "Review Count"
-    },
-    "has_website": {
-      "type": "boolean",
-      "title": "Has Website"
-    },
-    "niche": {
-      "type": "string",
-      "title": "Niche"
-    },
-    "city": {
-      "type": "string",
-      "title": "City"
-    },
-    "scraped_at": {
-      "type": "string",
-      "format": "date-time",
-      "title": "Scraped At"
-    },
-    "qualified": {
-      "type": "boolean",
-      "title": "Qualified",
-      "default": false,
-      "description": "Mark true after you've reached out so you don't double-dial."
-    },
-    "outreach_message": {
-      "type": "string",
-      "title": "Outreach Message",
-      "description": "AI-written first-touch message for this lead (editable)."
-    }
+    "place_id": { "type": "string", "title": "Legacy/Dedup ID", "description": "Existing dedup key. Kept for backwards compatibility." },
+    "name": { "type": "string", "title": "Name" },
+    "phone": { "type": "string", "title": "Phone" },
+    "email": { "type": "string", "title": "Email" },
+    "website": { "type": "string", "title": "Website" },
+    "address": { "type": "string", "title": "Address" },
+    "rating": { "type": "number", "title": "Rating" },
+    "review_count": { "type": "number", "title": "Review Count" },
+    "has_website": { "type": "boolean", "title": "Has Website" },
+    "niche": { "type": "string", "title": "Niche" },
+    "city": { "type": "string", "title": "City" },
+    "scraped_at": { "type": "string", "format": "date-time", "title": "Discovered At" },
+    "qualified": { "type": "boolean", "title": "Qualified", "default": false, "description": "Legacy/manual qualification flag." },
+    "outreach_message": { "type": "string", "title": "Outreach Message", "description": "AI-written first-touch message for this lead (editable)." },
+
+    "lead_type": { "type": "string", "title": "Lead Type", "description": "active_buyer, problem_need, researching, life_event, competitor_dissatisfaction, business_prospect, or unknown" },
+    "target_offer": { "type": "string", "title": "Target Offer", "description": "The product or service the campaign is trying to sell." },
+    "need": { "type": "string", "title": "Identified Need" },
+    "intent_score": { "type": "number", "title": "Intent Score", "description": "0-100 confidence that the prospect has buying intent." },
+    "freshness_score": { "type": "number", "title": "Freshness Score", "description": "0-100 based on how recent the intent evidence is." },
+    "active_need_score": { "type": "number", "title": "Active Need Score", "description": "0-100 confidence that the need is still active." },
+    "location_match_score": { "type": "number", "title": "Location Match Score", "description": "0-100 match against the campaign target area." },
+    "lead_score": { "type": "number", "title": "Overall Lead Score", "description": "0-100 overall priority score." },
+    "urgency": { "type": "string", "title": "Urgency", "description": "high, medium, low, or unknown" },
+    "status": { "type": "string", "title": "Lead Status", "description": "new, qualified, contacted, responded, appointment, won, lost, stale, or unverified" },
+
+    "source": { "type": "string", "title": "Lead Source", "description": "Where the lead evidence was found." },
+    "source_url": { "type": "string", "title": "Source URL" },
+    "evidence": { "type": "string", "title": "Intent Evidence", "description": "The factual evidence supporting why this is a lead." },
+    "evidence_date": { "type": "string", "format": "date-time", "title": "Evidence Date", "description": "When the intent evidence was posted or observed, when known." },
+    "evidence_age_days": { "type": "number", "title": "Evidence Age (Days)" },
+    "active_need": { "type": "string", "title": "Active Need Assessment", "description": "yes, no, or unknown" },
+    "ai_reasoning": { "type": "string", "title": "AI Qualification Reasoning" },
+    "recommended_action": { "type": "string", "title": "Recommended Action" },
+    "verification_status": { "type": "string", "title": "Verification Status", "description": "verified, needs_review, or rejected" }
   },
-  "required": [
-    "place_id",
-    "name"
-  ]
+  "required": ["place_id", "name"]
 }
